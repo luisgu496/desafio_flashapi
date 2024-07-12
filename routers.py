@@ -1,10 +1,11 @@
 from fastapi import APIRouter
-from workout_DIO.controllers.category_controller import router as category
-from workout_DIO.controllers.trainning_center_controller import router as trainning_center
-from workout_DIO.controllers.athlete_controller import router as athlete
-
+from workout_api.atleta.controller import router as atleta
+from workout_api.categorias.controller import router as categorias
+from workout_api.centro_treinamento.controller import router as centro_treinamento
 
 api_router = APIRouter()
-api_router.include_router(category, prefix='/category', tags=['categorias'])
-api_router.include_router(trainning_center, prefix="/trainning-center", tags=["Centro de Treinamento"])
-api_router.include_router(athlete, prefix="/athlete",tags=['Atletas'])
+api_router.include_router(atleta, prefix="/atletas", tags=["atletas"])
+api_router.include_router(categorias, prefix="/categorias", tags=["categorias"])
+api_router.include_router(
+    centro_treinamento, prefix="/centros_treinamento", tags=["centros_treinamento"]
+)
